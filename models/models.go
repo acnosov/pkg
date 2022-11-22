@@ -5,16 +5,21 @@ import (
 	"time"
 )
 
-const OfferMessageType = "offer"
-const BalanceMessageType = "balance"
-const InfoMessageType = "info"
-const XrateMessageType = "xrate"
-const BetslipMessageType = "betslip"
-const PmmMessageType = "pmm"
-const SyncMessageType = "sync"
-const BetslipClosedMessageType = "betslip_closed"
-const OrderMessageType = "order"
-const BetMessageType = "bet"
+const (
+	OfferMessageType               = "offer"
+	BalanceMessageType             = "balance"
+	InfoMessageType                = "info"
+	XrateMessageType               = "xrate"
+	BetslipMessageType             = "betslip"
+	PmmMessageType                 = "pmm"
+	SyncMessageType                = "sync"
+	BetslipClosedMessageType       = "betslip_closed"
+	OrderMessageType               = "order"
+	BetMessageType                 = "bet"
+	UnsubscribeEventMessageType    = "unsubscribe_event"
+	SubscribeEventMessageType      = "subscribe_event"
+	UnsubscribeAllEventMessageType = "unsubscribe_all_event"
+)
 
 type Offers struct {
 	EventID   int64     `json:"event_id"`
