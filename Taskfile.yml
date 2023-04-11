@@ -1,0 +1,67 @@
+version: '3'
+
+vars:
+  APP_NAME: websocket
+  USERNAME:
+    sh: git config user.name
+
+tasks:
+  up:
+    desc: update all packages
+    cmds:
+      - go get -v -u logger
+      - task: list_majors
+
+  tidy:
+    desc: Tidy makes sure go.mod matches the source code in the module
+    deps:
+      - task: up
+    cmds:
+      - go mod tidy -v -x
+
+  build:
+    desc: build exe file to dist dir
+    deps:
+      - task: tidy
+    cmds:
+      - go build -ldflags="-s -w -X main.version={{.VERSION}}" -o ./dist/{{.APP_NAME}}.exe ./cmd/{{.APP_NAME}}
+    vars:
+      VERSION:
+        sh: git rev-parse --short=5 HEAD
+
+  start:
+    desc: start exe file from dist dir
+    cmds:
+      - ./dist/{{.APP_NAME}}.exe
+
+  update_and_run:
+    desc: update, tidy, build and run updated exe file
+    deps:
+      - task: build
+    cmds:
+      - task: start
+
+  run:
+    cmds:
+      - go run -ldflags="-s -w -X main.version={{.VERSION}}" ./cmd/{{.APP_NAME}}
+    vars:
+      VERSION:
+        sh: git rev-parse --short=5 HEAD
+
+
+  docker_build:
+    cmds:
+      - docker build --build-arg VERSION={{.VERSION}}  -t ghcr.io/{{.USERNAME}}/{{.APP_NAME}}:latest .
+    vars:
+      VERSION:
+        sh: git rev-parse --short=5 HEAD
+
+  up_majors:
+    desc: GoMajor is a tool for major version upgrades
+    cmds:
+      - gomajor list
+
+  list_majors:
+    desc: GoMajor is a tool for major version upgrades
+    cmds:
+      - gomajor list
