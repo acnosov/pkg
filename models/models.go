@@ -115,6 +115,7 @@ type Timing struct {
 	EndSecondBet    time.Time
 	BeginStats      time.Time
 	EndStats        time.Time
+	BeforeSubmit    time.Time
 }
 type SubscribeEventRequest struct {
 	CompetitionId int64     `json:"competition_id,omitempty"`
