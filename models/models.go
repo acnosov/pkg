@@ -21,59 +21,6 @@ const (
 	UnsubscribeAllEventMessageType = "unsubscribe_all_event"
 )
 
-//type OffersOld struct {
-//	EventID   int64     `json:"event_id"`
-//	Starts    time.Time `json:"starts"`
-//	Sport     string    `json:"sport"`
-//	WsReceive time.Time `json:"ws_receive"`
-//	WDW       WDW       `json:"wdw"`
-//	DC        DC        `json:"dc"`
-//	AH        []AH      `json:"ah"`
-//	OU        []OU      `json:"ou"`
-//	ML        ML        `json:"ml"`
-//	MLT       ML        `json:"mlt"`
-//	MLH       ML        `json:"mlh"`
-//	AhAll     []AH      `json:"ah_all"`
-//	AhHalf    []AH      `json:"ah_half"`
-//	AhouAll   []OU      `json:"ahou_all"`
-//	AhouHalf  []OU      `json:"ahou_half"`
-//}
-
-//type WDW struct {
-//	Home float64 `json:"home,omitempty"`
-//	Draw float64 `json:"draw,omitempty"`
-//	Away float64 `json:"away,omitempty"`
-//}
-
-//type DC struct {
-//	HomeAway float64 `json:"home_away,omitempty"`
-//	AwayDraw float64 `json:"away_draw,omitempty"`
-//	HomeDraw float64 `json:"home_draw,omitempty"`
-//}
-
-//type CS struct {
-//	HomeScore int64
-//	AwayScore int64
-//	Price     float64
-//}
-
-//type OU struct {
-//	TotalIndex int64   `json:"total_index"`
-//	Over       float64 `json:"over"`
-//	Under      float64 `json:"under"`
-//}
-
-//type ML struct {
-//	Home float64 `json:"home"`
-//	Away float64 `json:"away"`
-//}
-
-//type AH struct {
-//	Handicap int64   `json:"handicap"`
-//	Home     float64 `json:"home"`
-//	Away     float64 `json:"away"`
-//}
-
 // Offer universal
 type Offer struct {
 	A float64 `json:"a"`
@@ -88,17 +35,6 @@ type Offers struct {
 	Sport     string    `json:"sport"`
 	WsReceive time.Time `json:"ws_receive"`
 	OfferList []Offer   `json:"offer_list"`
-	//WDW       WDW       `json:"wdw"`
-	//DC        DC        `json:"dc"`
-	//AH        []AH      `json:"ah"`
-	//OU        []OU      `json:"ou"`
-	//ML        ML        `json:"ml"`
-	//MLT       ML        `json:"mlt"`
-	//MLH       ML        `json:"mlh"`
-	//AhAll     []AH      `json:"ah_all"`
-	//AhHalf    []AH      `json:"ah_half"`
-	//AhouAll   []OU      `json:"ahou_all"`
-	//AhouHalf  []OU      `json:"ahou_half"`
 }
 type Timing struct {
 	WsReceive       time.Time
