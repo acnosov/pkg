@@ -89,6 +89,8 @@ type EventWithScore struct {
 	Offline       bool      `json:"offline"`
 	TimeName      *string   `json:"time_name"`
 	TimeMin       *int64    `json:"time_min"`
+	ScoreHome     *int64    `json:"score_home"`
+	ScoreAway     *int64    `json:"score_away"`
 }
 
 func (e EventWithScore) EventID() string {
