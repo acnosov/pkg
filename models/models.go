@@ -149,8 +149,8 @@ type BetslipMessage struct {
 	Ts                    float64  `json:"ts"`
 }
 type BalanceMessage struct {
-	Balance   []interface{} `json:"balance" mapstructure:"balance"`
-	OpenStake []interface{} `json:"open_stake" mapstructure:"open_stake"`
+	Balance   []interface{} `json:"balance"`
+	OpenStake []interface{} `json:"open_stake"`
 	Ts        float64       `json:"ts"`
 	UserID    int64         `json:"user_id"`
 }
@@ -167,8 +167,8 @@ type User struct {
 	Currency  string     `json:"currency"`
 }
 type XRateMessage struct {
-	Ccy  string  `mapstructure:"ccy" json:"ccy,omitempty"`
-	Rate float64 `mapstructure:"rate" json:"rate,omitempty"`
+	Ccy  string  ` json:"ccy,omitempty"`
+	Rate float64 `json:"rate,omitempty"`
 	Ts   float64 `json:"ts,omitempty"`
 }
 type Result struct {
@@ -248,7 +248,17 @@ type BetMessage struct {
 	Status     struct {
 		Code string `json:"code" mapstructure:"code"`
 	} `json:"status" mapstructure:"status"`
-	Username  string        `json:"username" mapstructure:"username"`
-	WantPrice float64       `json:"want_price" mapstructure:"want_price"`
-	WantStake []interface{} `json:"want_stake" mapstructure:"want_stake"`
+	Username     string        `json:"username" mapstructure:"username"`
+	WantPrice    float64       `json:"want_price" mapstructure:"want_price"`
+	WantStake    []interface{} `json:"want_stake" mapstructure:"want_stake"`
+	ExchangeRole any           `json:"exchange_role" mapstructure:"exchange_role"`
+}
+
+type BetslipClosedMessage struct {
+	BetslipId   string `json:"betslip_id" `
+	CloseReason string `json:"close_reason" `
+}
+
+type SyncMessage struct {
+	Token string `json:"token" `
 }
