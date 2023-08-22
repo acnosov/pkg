@@ -178,16 +178,16 @@ type Result struct {
 	FtAway int `json:"ft_away"`
 }
 type EventInfo struct {
-	EventId            string `json:"event_id" mapstructure:"event_id"`
-	HomeId             int    `json:"home_id" mapstructure:"home_id"`
-	HomeTeam           string `json:"home_team" mapstructure:"home_team"`
-	AwayId             int    `json:"away_id" mapstructure:"away_id"`
-	AwayTeam           string `json:"away_team" mapstructure:"away_team"`
-	CompetitionId      int    `json:"competition_id" mapstructure:"competition_id"`
-	CompetitionName    string `json:"competition_name" mapstructure:"competition_name"`
-	CompetitionCountry string `json:"competition_country" mapstructure:"competition_country"`
-	StartTime          string `json:"start_time" mapstructure:"start_time"`
-	Date               string `json:"date" mapstructure:"date"`
+	EventId            string `json:"event_id"`
+	HomeId             int    `json:"home_id"`
+	HomeTeam           string `json:"home_team"`
+	AwayId             int    `json:"away_id"`
+	AwayTeam           string `json:"away_team"`
+	CompetitionId      int    `json:"competition_id"`
+	CompetitionName    string `json:"competition_name"`
+	CompetitionCountry string `json:"competition_country"`
+	StartTime          string `json:"start_time"`
+	Date               string `json:"date"`
 	Result             Result `json:"result,omitempty"`
 }
 
@@ -226,10 +226,10 @@ type OrderData struct {
 }
 
 type InfoMessage struct {
-	QueueSize        int     `mapstructure:"queue_size" json:"queue_size"`
-	QueueSizeMax     int     `mapstructure:"queue_size_max" json:"queue_size_max"`
-	RegisteredEvents int     `mapstructure:"registered_events" json:"registered_events"`
-	MaxQueueSize     int     `mapstructure:"max_queue_size" json:"max_queue_size"`
+	QueueSize        int     `json:"queue_size"`
+	QueueSizeMax     int     `json:"queue_size_max"`
+	RegisteredEvents int     `json:"registered_events"`
+	MaxQueueSize     int     `json:"max_queue_size"`
 	Ts               float64 `json:"ts"`
 }
 
