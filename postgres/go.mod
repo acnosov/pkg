@@ -1,6 +1,6 @@
 module github.com/aibotsoft/pkg/postgres
 
-go 1.20
+go 1.21
 
 require (
 	github.com/exaring/otelpgx v0.4.1
