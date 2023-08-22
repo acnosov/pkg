@@ -248,10 +248,10 @@ type BetMessage struct {
 	Status     struct {
 		Code string `json:"code" mapstructure:"code"`
 	} `json:"status" mapstructure:"status"`
-	Username     string        `json:"username" mapstructure:"username"`
-	WantPrice    float64       `json:"want_price" mapstructure:"want_price"`
-	WantStake    []interface{} `json:"want_stake" mapstructure:"want_stake"`
-	ExchangeRole any           `json:"exchange_role" mapstructure:"exchange_role"`
+	Username     string        `json:"username"`
+	WantPrice    float64       `json:"want_price"`
+	WantStake    []interface{} `json:"want_stake"`
+	ExchangeRole any           `json:"exchange_role"`
 }
 
 type BetslipClosedMessage struct {
