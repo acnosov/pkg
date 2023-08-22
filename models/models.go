@@ -38,6 +38,7 @@ type Offers struct {
 }
 type Timing struct {
 	WsReceive       time.Time
+	BeforeProcess   time.Time
 	BeginOpen       time.Time
 	EndOpen         time.Time
 	StartJob        time.Time
