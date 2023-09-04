@@ -1,3 +1,3 @@
-module github.com/aibotsoft/pkg/models
+module github.com/acnosov/pkg/models
 
 go 1.21
