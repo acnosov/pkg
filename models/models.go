@@ -98,6 +98,15 @@ func (e EventWithScore) EventID() string {
 	return fmt.Sprintf("%s,%d,%d", e.EventDate.Format("2006-01-02"), e.HomeID, e.AwayID)
 }
 
+type Effective struct {
+	Price float64       `json:"price" mapstructure:"price"`
+	Min   []interface{} `json:"min" mapstructure:"min"`
+	Max   []interface{} `json:"max" mapstructure:"max"`
+}
+type PriceList struct {
+	Effective Effective `json:"effective" mapstructure:"effective"`
+}
+
 type PmmMessage struct {
 	BetslipId string `json:"betslip_id" mapstructure:"betslip_id"`
 	Sport     string `json:"sport" mapstructure:"sport"`
@@ -108,14 +117,8 @@ type PmmMessage struct {
 	Status    struct {
 		Code string `json:"code" mapstructure:"code"`
 	} `json:"status" mapstructure:"status"`
-	PriceList []struct {
-		Effective struct {
-			Price float64       `json:"price" mapstructure:"price"`
-			Min   []interface{} `json:"min" mapstructure:"min"`
-			Max   []interface{} `json:"max" mapstructure:"max"`
-		} `json:"effective" mapstructure:"effective"`
-	} `json:"price_list" mapstructure:"price_list"`
-	Ts float64 `json:"ts"`
+	PriceList []PriceList `json:"price_list" mapstructure:"price_list"`
+	Ts        float64     `json:"ts"`
 }
 
 type BetslipData struct {
