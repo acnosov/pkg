@@ -74,8 +74,19 @@ type EventDB struct {
 	Offline       bool      `json:"offline"`
 }
 
-func (e EventDB) EventID() string {
+func (e *EventDB) EventID() string {
 	return fmt.Sprintf("%s,%d,%d", e.EventDate.Format("2006-01-02"), e.HomeID, e.AwayID)
+}
+
+type EventKey struct {
+	Sport     string    `json:"sport"`
+	EventDate time.Time `json:"event_date"`
+	HomeID    int64     `json:"home_id"`
+	AwayID    int64     `json:"away_id"`
+}
+
+func (e *EventDB) Key() EventKey {
+	return EventKey{Sport: e.Sport, EventDate: e.EventDate, HomeID: e.HomeID, AwayID: e.AwayID}
 }
 
 type EventWithScore struct {
