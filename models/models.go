@@ -35,6 +35,7 @@ type Offers struct {
 	Sport     string    `json:"sport"`
 	WsReceive time.Time `json:"ws_receive"`
 	OfferList []Offer   `json:"offer_list"`
+	SendTime  time.Time
 }
 type Timing struct {
 	WsReceive       time.Time
@@ -130,6 +131,7 @@ type PmmMessage struct {
 	} `json:"status" mapstructure:"status"`
 	PriceList []PriceList `json:"price_list" mapstructure:"price_list"`
 	Ts        float64     `json:"ts"`
+	SendTime  time.Time
 }
 
 type BetslipData struct {
@@ -162,12 +164,14 @@ type BetslipMessage struct {
 	CustomerCcy           string   `json:"customer_ccy" mapstructure:"customer_ccy"`
 	BetslipType           string   `json:"betslip_type" mapstructure:"betslip_type"`
 	Ts                    float64  `json:"ts"`
+	SendTime              time.Time
 }
 type BalanceMessage struct {
 	Balance   []interface{} `json:"balance"`
 	OpenStake []interface{} `json:"open_stake"`
 	Ts        float64       `json:"ts"`
 	UserID    int64         `json:"user_id"`
+	SendTime  time.Time
 }
 
 type User struct {
@@ -182,9 +186,10 @@ type User struct {
 	Currency  string     `json:"currency"`
 }
 type XRateMessage struct {
-	Ccy  string  ` json:"ccy,omitempty"`
-	Rate float64 `json:"rate,omitempty"`
-	Ts   float64 `json:"ts,omitempty"`
+	Ccy      string  ` json:"ccy,omitempty"`
+	Rate     float64 `json:"rate,omitempty"`
+	Ts       float64 `json:"ts,omitempty"`
+	SendTime time.Time
 }
 type Result struct {
 	HtHome int `json:"ht_home"`
@@ -238,6 +243,7 @@ type OrderData struct {
 	} `json:"bet_bar_values" mapstructure:"bet_bar_values"`
 	Ts            float64  `json:"ts"`
 	BetBookieList []string `json:"bet_bookie_list"`
+	SendTime      time.Time
 }
 
 type InfoMessage struct {
@@ -246,6 +252,7 @@ type InfoMessage struct {
 	RegisteredEvents int     `json:"registered_events"`
 	MaxQueueSize     int     `json:"max_queue_size"`
 	Ts               float64 `json:"ts"`
+	SendTime         time.Time
 }
 
 type BetMessage struct {
@@ -270,8 +277,9 @@ type BetMessage struct {
 }
 
 type BetslipClosedMessage struct {
-	BetslipId   string `json:"betslip_id" `
-	CloseReason string `json:"close_reason" `
+	BetslipId   string `json:"betslip_id"`
+	CloseReason string `json:"close_reason"`
+	SendTime    time.Time
 }
 
 type SyncMessage struct {
