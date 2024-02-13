@@ -110,59 +110,60 @@ func (e EventWithScore) EventID() string {
 	return fmt.Sprintf("%s,%d,%d", e.EventDate.Format("2006-01-02"), e.HomeID, e.AwayID)
 }
 
-type Effective struct {
-	Price float64       `json:"price" mapstructure:"price"`
-	Min   []interface{} `json:"min" mapstructure:"min"`
-	Max   []interface{} `json:"max" mapstructure:"max"`
-}
-type PriceList struct {
-	Effective Effective `json:"effective" mapstructure:"effective"`
-}
-
-type PmmMessage struct {
-	BetslipId string `json:"betslip_id" mapstructure:"betslip_id"`
-	Sport     string `json:"sport" mapstructure:"sport"`
-	EventId   string `json:"event_id" mapstructure:"event_id"`
-	Bookie    string `json:"bookie" mapstructure:"bookie"`
-	Username  string `json:"username" mapstructure:"username"`
-	BetType   string `json:"bet_type" mapstructure:"bet_type"`
-	Status    struct {
-		Code string `json:"code" mapstructure:"code"`
-	} `json:"status" mapstructure:"status"`
-	PriceList []PriceList `json:"price_list" mapstructure:"price_list"`
-	Ts        float64     `json:"ts"`
-	SendTime  time.Time
-}
-
 type BetslipData struct {
 	BetslipMessage BetslipMessage
 	PmmMap         map[string]PmmMessage
 	Ts             float64
 }
 
+type PmmMessage struct {
+	BetslipId string `json:"betslip_id"`
+	Sport     string `json:"sport"`
+	EventId   string `json:"event_id"`
+	Bookie    string `json:"bookie"`
+	Username  string `json:"username"`
+	BetType   string `json:"bet_type"`
+	Status    struct {
+		Code string `json:"code"`
+	} `json:"status"`
+	PriceList []PriceList `json:"price_list"`
+	Ts        float64     `json:"ts"`
+	SendTime  time.Time
+}
+
+type PriceList struct {
+	Effective Effective `json:"effective"`
+}
+
+type Effective struct {
+	Price float64       `json:"price"`
+	Min   []interface{} `json:"min"`
+	Max   []interface{} `json:"max"`
+}
+
 type BetslipMessage struct {
-	BetslipId          string  `json:"betslip_id" mapstructure:"betslip_id"`
-	Sport              string  `json:"sport" mapstructure:"sport"`
-	EventId            string  `json:"event_id" mapstructure:"event_id"`
-	BetType            string  `json:"bet_type" mapstructure:"bet_type"`
-	BetTypeTemplate    string  `json:"bet_type_template" mapstructure:"bet_type_template"`
-	BetTypeDescription string  `json:"bet_type_description" mapstructure:"bet_type_description"`
-	ExpiryTs           float64 `json:"expiry_ts" mapstructure:"expiry_ts"`
-	IsOpen             bool    `json:"is_open" mapstructure:"is_open"`
-	CloseReason        string  `json:"close_reason" mapstructure:"close_reason"`
+	BetslipId          string  `json:"betslip_id"`
+	Sport              string  `json:"sport"`
+	EventId            string  `json:"event_id"`
+	BetType            string  `json:"bet_type"`
+	BetTypeTemplate    string  `json:"bet_type_template"`
+	BetTypeDescription string  `json:"bet_type_description"`
+	ExpiryTs           float64 `json:"expiry_ts"`
+	IsOpen             bool    `json:"is_open"`
+	CloseReason        string  `json:"close_reason"`
 	Accounts           []struct {
-		Bookie   string `json:"bookie" mapstructure:"bookie"`
-		Username string `json:"username" mapstructure:"username"`
-		BetType  string `json:"bet_type" mapstructure:"bet_type"`
-	} `json:"accounts" mapstructure:"accounts"`
-	MultipleAccounts      bool     `json:"multiple_accounts" mapstructure:"multiple_accounts"`
-	EquivalentBets        bool     `json:"equivalent_bets" mapstructure:"equivalent_bets"`
-	EquivalentBetsBookies []string `json:"equivalent_bets_bookies" mapstructure:"equivalent_bets_bookies"`
-	WantBookies           []string `json:"want_bookies" mapstructure:"want_bookies"`
-	BookiesWithOffers     []string `json:"bookies_with_offers" mapstructure:"bookies_with_offers"`
-	CustomerUsername      string   `json:"customer_username" mapstructure:"customer_username"`
-	CustomerCcy           string   `json:"customer_ccy" mapstructure:"customer_ccy"`
-	BetslipType           string   `json:"betslip_type" mapstructure:"betslip_type"`
+		Bookie   string `json:"bookie"`
+		Username string `json:"username"`
+		BetType  string `json:"bet_type"`
+	} `json:"accounts"`
+	MultipleAccounts      bool     `json:"multiple_accounts"`
+	EquivalentBets        bool     `json:"equivalent_bets"`
+	EquivalentBetsBookies []string `json:"equivalent_bets_bookies"`
+	WantBookies           []string `json:"want_bookies"`
+	BookiesWithOffers     []string `json:"bookies_with_offers"`
+	CustomerUsername      string   `json:"customer_username"`
+	CustomerCcy           string   `json:"customer_ccy"`
+	BetslipType           string   `json:"betslip_type"`
 	Ts                    float64  `json:"ts"`
 	SendTime              time.Time
 }
@@ -212,35 +213,35 @@ type EventInfo struct {
 }
 
 type OrderData struct {
-	OrderId            int64         `json:"order_id" mapstructure:"order_id"`
-	OrderType          string        `json:"order_type" mapstructure:"order_type"`
-	BetType            string        `json:"bet_type" mapstructure:"bet_type"`
-	BetTypeTemplate    string        `json:"bet_type_template" mapstructure:"bet_type_template"`
-	BetTypeDescription string        `json:"bet_type_description" mapstructure:"bet_type_description"`
-	Sport              string        `json:"sport" mapstructure:"sport"`
-	Placer             string        `json:"placer" mapstructure:"placer"`
-	WantPrice          float64       `json:"want_price" mapstructure:"want_price"`
-	WantStake          []interface{} `json:"want_stake" mapstructure:"want_stake"`
-	CcyRate            float64       `json:"ccy_rate" mapstructure:"ccy_rate"`
-	PlacementTime      string        `json:"placement_time" mapstructure:"placement_time"`
-	ExpiryTime         string        `json:"expiry_time" mapstructure:"expiry_time"`
-	Closed             bool          `json:"closed" mapstructure:"closed"`
-	CloseReason        string        `json:"close_reason" mapstructure:"close_reason"`
-	EventInfo          EventInfo     `json:"event_info" mapstructure:"event_info"`
-	UserData           string        `json:"user_data" mapstructure:"user_data"`
-	Status             string        `json:"status" mapstructure:"status"`
-	KeepOpenIr         bool          `json:"keep_open_ir" mapstructure:"keep_open_ir"`
-	ExchangeMode       string        `json:"exchange_mode" mapstructure:"exchange_mode"`
-	Price              float64       `json:"price" mapstructure:"price"`
-	Stake              []interface{} `json:"stake" mapstructure:"stake"`
-	ProfitLoss         []interface{} `json:"profit_loss" mapstructure:"profit_loss"`
-	Bets               []BetMessage  `json:"bets" mapstructure:"bets"`
+	OrderId            int64         `json:"order_id"`
+	OrderType          string        `json:"order_type"`
+	BetType            string        `json:"bet_type"`
+	BetTypeTemplate    string        `json:"bet_type_template"`
+	BetTypeDescription string        `json:"bet_type_description"`
+	Sport              string        `json:"sport"`
+	Placer             string        `json:"placer"`
+	WantPrice          float64       `json:"want_price"`
+	WantStake          []interface{} `json:"want_stake"`
+	CcyRate            float64       `json:"ccy_rate"`
+	PlacementTime      string        `json:"placement_time"`
+	ExpiryTime         string        `json:"expiry_time"`
+	Closed             bool          `json:"closed"`
+	CloseReason        string        `json:"close_reason"`
+	EventInfo          EventInfo     `json:"event_info"`
+	UserData           string        `json:"user_data"`
+	Status             string        `json:"status"`
+	KeepOpenIr         bool          `json:"keep_open_ir"`
+	ExchangeMode       string        `json:"exchange_mode"`
+	Price              float64       `json:"price"`
+	Stake              []interface{} `json:"stake"`
+	ProfitLoss         []interface{} `json:"profit_loss"`
+	Bets               []BetMessage  `json:"bets"`
 	BetBarValues       struct {
-		Success    []interface{} `json:"success" mapstructure:"success"`
-		Inprogress []interface{} `json:"inprogress" mapstructure:"inprogress"`
-		Danger     []interface{} `json:"danger" mapstructure:"danger"`
-		Unplaced   []interface{} `json:"unplaced" mapstructure:"unplaced"`
-	} `json:"bet_bar_values" mapstructure:"bet_bar_values"`
+		Success    []interface{} `json:"success"`
+		Inprogress []interface{} `json:"inprogress"`
+		Danger     []interface{} `json:"danger"`
+		Unplaced   []interface{} `json:"unplaced"`
+	} `json:"bet_bar_values"`
 	Ts            float64  `json:"ts"`
 	BetBookieList []string `json:"bet_bookie_list"`
 	SendTime      time.Time
@@ -256,20 +257,20 @@ type InfoMessage struct {
 }
 
 type BetMessage struct {
-	BetId      int64         `json:"bet_id" mapstructure:"bet_id"`
-	BetType    string        `json:"bet_type" mapstructure:"bet_type"`
-	Bookie     string        `json:"bookie" mapstructure:"bookie"`
-	CcyRate    float64       `json:"ccy_rate" mapstructure:"ccy_rate"`
-	EventId    string        `json:"event_id" mapstructure:"event_id"`
-	GotPrice   float64       `json:"got_price" mapstructure:"got_price"`
-	GotStake   []interface{} `json:"got_stake" mapstructure:"got_stake"`
-	OrderId    int           `json:"order_id" mapstructure:"order_id"`
-	ProfitLoss []interface{} `json:"profit_loss" mapstructure:"profit_loss"`
-	Reconciled bool          `json:"reconciled" mapstructure:"reconciled"`
-	Sport      string        `json:"sport" mapstructure:"sport"`
+	BetId      int64         `json:"bet_id"`
+	BetType    string        `json:"bet_type"`
+	Bookie     string        `json:"bookie"`
+	CcyRate    float64       `json:"ccy_rate"`
+	EventId    string        `json:"event_id"`
+	GotPrice   float64       `json:"got_price"`
+	GotStake   []interface{} `json:"got_stake"`
+	OrderId    int           `json:"order_id"`
+	ProfitLoss []interface{} `json:"profit_loss"`
+	Reconciled bool          `json:"reconciled"`
+	Sport      string        `json:"sport"`
 	Status     struct {
-		Code string `json:"code" mapstructure:"code"`
-	} `json:"status" mapstructure:"status"`
+		Code string `json:"code"`
+	} `json:"status"`
 	Username     string        `json:"username"`
 	WantPrice    float64       `json:"want_price"`
 	WantStake    []interface{} `json:"want_stake"`
