@@ -287,3 +287,9 @@ type BetslipClosedMessage struct {
 type SyncMessage struct {
 	Token string `json:"token" `
 }
+
+type DisconnectedMessage struct {
+	Error      string `json:"error"`
+	ErrorCount int64  `json:"error_count"`
+	SendTime   time.Time
+}
