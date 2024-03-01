@@ -19,6 +19,7 @@ const (
 	UnsubscribeEventMessageType    = "unsubscribe_event"
 	SubscribeEventMessageType      = "subscribe_event"
 	UnsubscribeAllEventMessageType = "unsubscribe_all_event"
+	DisconnectedMessageType        = "websocket_disconnected"
 )
 
 // Offer universal
