@@ -289,7 +289,7 @@ type SyncMessage struct {
 }
 
 type DisconnectedMessage struct {
-	Error      string `json:"error"`
-	ErrorCount int64  `json:"error_count"`
-	SendTime   time.Time
+	Error      string    `json:"error"`
+	ErrorCount int64     `json:"error_count"`
+	SendTime   time.Time `json:"send_time"`
 }
